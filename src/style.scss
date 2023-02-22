@@ -1,4 +1,19 @@
+$main-color: #ffffff;
+$font-color: #000000;
+$accent-color: #f0c7d5;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+}
 
 .brand-logo {
-    font-family: 'Akaya Telivigala', cursive;
+    font: 3rem 'Akaya Telivigala', cursive;
 }

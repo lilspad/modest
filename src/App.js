@@ -21,7 +21,7 @@ function App() {
             productPrice={5} 
             productSize="500ml" 
             productDescription="Refreshing tonic for a clean feel skin." 
-            imgSrc="" />
+             />
         </div>
       </main>
     </div>

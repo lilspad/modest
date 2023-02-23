@@ -3,6 +3,7 @@ import Product from './components/product.js';
 import {cleanser, serum, tonic, oil, moisturiser} from './media/product-media.js';
 
 function App() {
+
   return (
     <div className="App">
       <header className="App-header">
@@ -66,6 +67,9 @@ function App() {
 
         </div>
       </main>
+      <footer>
+        <div className="copyright"><p> © Lily Paczesniak 2023 </p></div>
+      </footer>
     </div>
   );
 }

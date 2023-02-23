@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Carousel from './carousel.js';
-import {cleanserInfo, serumInfo, tonicInfo, oilInfo, moisturiserInfo} from './product-info.js';
+import {cleanserInfo, serumInfo, tonicInfo, oilInfo, creamInfo} from './product-info.js';
 
 function Product(props) {
 
@@ -21,7 +21,7 @@ function Product(props) {
             info = oilInfo;
             break;
         case 4:
-            info = moisturiserInfo;
+            info = creamInfo;
             break;
         default:
             info = cleanserInfo;

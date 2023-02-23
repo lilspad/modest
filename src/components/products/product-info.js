@@ -1,4 +1,4 @@
-import {cleanserMedia, serumMedia, tonicMedia, oilMedia, moisturiserMedia} from './product-media.js';
+import {cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia} from './product-media.js';
 
 const cleanserInfo = {
     name: "Cleanser",
@@ -32,12 +32,12 @@ const oilInfo = {
     media: oilMedia
 };
 
-const moisturiserInfo = {
-    name: "Moisturiser",
+const creamInfo = {
+    name: "Cream",
     price: 8,
     size: "90ml",
-    description: "Quick-absorbing, all-purpose moisturiser sutiable for all skin types.",
-    media: moisturiserMedia
+    description: "Quick-absorbing, all-purpose cream sutiable for all skin types.",
+    media: creamMedia
 };
 
-export {cleanserInfo, tonicInfo, serumInfo, oilInfo, moisturiserInfo};
+export {cleanserInfo, tonicInfo, serumInfo, oilInfo, creamInfo};

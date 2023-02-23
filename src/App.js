@@ -46,59 +46,61 @@ const handleWishlist = () => {
   }
 }
 
-function App() {
+class App extends React.Component {
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="brand-logo">Modest</h1>
-        <div className="header-menu">
-          <i className="fa-solid fa-circle-user"></i>
-          <div onClick={handleWishlist}><i className="fa-solid fa-heart"></i></div>
-          <i className="fa-solid fa-basket-shopping"></i>
-        </div>
-      </header>
-      <main>
-        <div className="wishlist hidden" id="wishlist" style={{display: 'none'}}>
-          <ul id="wishlist-list">
-            
-          </ul>
-        </div>
-        <div className="overlay" id="overlay" style={{display: 'none'}} onClick={handleWishlist}></div>
-        <div className="product-layout">
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1 className="brand-logo">Modest</h1>
+          <div className="header-menu">
+            <i className="fa-solid fa-circle-user"></i>
+            <div onClick={handleWishlist}><i className="fa-solid fa-heart"></i></div>
+            <i className="fa-solid fa-basket-shopping"></i>
+          </div>
+        </header>
+        <main>
+          <div className="wishlist hidden" id="wishlist" style={{display: 'none'}}>
+            <ul id="wishlist-list">
+              
+            </ul>
+          </div>
+          <div className="overlay" id="overlay" style={{display: 'none'}} onClick={handleWishlist}></div>
+          <div className="product-layout">
 
-          <Product 
-            productId={0}
-            handleFavourite={() => handleFavourite(0)}
-          />
-        
-          <Product 
-            productId={1}
-            handleFavourite={() => handleFavourite(1)}
-          />
+            <Product 
+              productId={0}
+              handleFavourite={() => handleFavourite(0)}
+            />
+          
+            <Product 
+              productId={1}
+              handleFavourite={() => handleFavourite(1)}
+            />
 
-          <Product 
-            productId={2}
-            handleFavourite={() => handleFavourite(2)}
-          />
+            <Product 
+              productId={2}
+              handleFavourite={() => handleFavourite(2)}
+            />
 
-          <Product 
-            productId={3}
-            handleFavourite={() => handleFavourite(3)}
-          />
+            <Product 
+              productId={3}
+              handleFavourite={() => handleFavourite(3)}
+            />
 
-          <Product 
-            productId={4}
-            handleFavourite={() => handleFavourite(4)}
-          />
+            <Product 
+              productId={4}
+              handleFavourite={() => handleFavourite(4)}
+            />
 
-        </div>
-      </main>
-      <footer>
-        <div className="copyright"><p> © Lily Paczesniak 2023 </p> <p>Photos by <a href="https://www.pexels.com/@ron-lach/" target="blank">Ron Lach</a></p></div>
-      </footer>
-    </div>
-  );
+          </div>
+        </main>
+        <footer>
+          <div className="copyright"><p> © Lily Paczesniak 2023 </p> <p>Photos by <a href="https://www.pexels.com/@ron-lach/" target="blank">Ron Lach</a></p></div>
+        </footer>
+      </div>
+    );
+  }
 }
 
 export default App;

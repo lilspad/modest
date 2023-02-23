@@ -20,15 +20,15 @@ import cream3 from './products/cream3.jpg';
 
 const cleanser = [
     {
-        alt: "",
+        alt: "Product image of cleanser",
         src: cleanser1
     },
     {
-        alt: "",
+        alt: "A man squeezing the cleanser onto his hand",
         src: cleanser2
     },
     {
-        alt: "",
+        alt: "A man washing his face",
         src: cleanser3
     }
 ]
@@ -54,11 +54,11 @@ const serum = [
         src: serum1
     },
     {
-        alt: "A woman holding the product close up to camera",
+        alt: "Serum being squeezed onto a woman's finger",
         src: serum2
     },
     {
-        alt: "A woman pouring the serum onto a cotton pad",
+        alt: "A woman applying a serum to her cheekbone",
         src: serum3
     }
 ];
@@ -69,11 +69,11 @@ const oil = [
         src: oil1
     },
     {
-        alt: "",
+        alt: "Oil pipette dripping onto a woman's hand",
         src: oil2
     },
     {
-        alt: "",
+        alt: "Woman applying a drop of oil onto her face with a pipette",
         src: oil3
     }
 ]
@@ -84,11 +84,11 @@ const moisturiser = [
         src: cream1
     },
     {
-        alt: "A woman holding the product close up to camera",
+        alt: "Moisturiser being squeezed out onto a woman's hand",
         src: cream2
     },
     {
-        alt: "A woman pouring the moisturiser onto a cotton pad",
+        alt: "Woman's face with a visible layer of moisturiser on the cheek",
         src: cream3
     }
 ];

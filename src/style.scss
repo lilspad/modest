@@ -100,6 +100,10 @@ $accent-font-family: 'Akaya Telivigala', cursive;
         overflow: scroll;
         scroll-behavior: smooth;
     }
+
+    .slides-container::-webkit-scrollbar {
+        display: none;
+    }
     
     .slide {
         width: 100%;

@@ -18,7 +18,7 @@ import cream1 from './products/cream1.jpg';
 import cream2 from './products/cream2.jpg';
 import cream3 from './products/cream3.jpg';
 
-const cleanser = [
+const cleanserMedia = [
     {
         alt: "Product image of cleanser",
         src: cleanser1
@@ -33,7 +33,7 @@ const cleanser = [
     }
 ]
 
-const tonic = [
+const tonicMedia = [
     {
         alt: "Product image of tonic",
         src: tonic1
@@ -48,7 +48,7 @@ const tonic = [
     }
 ];
 
-const serum = [
+const serumMedia = [
     {
         alt: "Product image of serum",
         src: serum1
@@ -63,7 +63,7 @@ const serum = [
     }
 ];
 
-const oil = [
+const oilMedia = [
     {
         alt: "Product image of oil",
         src: oil1
@@ -78,7 +78,7 @@ const oil = [
     }
 ]
 
-const moisturiser = [
+const moisturiserMedia = [
     {
         alt: "Product image of moisturiser",
         src: cream1
@@ -93,4 +93,4 @@ const moisturiser = [
     }
 ];
 
-export {cleanser, serum, tonic, oil, moisturiser};
+export {cleanserMedia, serumMedia, tonicMedia, oilMedia, moisturiserMedia};

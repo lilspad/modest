@@ -1,6 +1,19 @@
 import './style.scss';
 import Product from './components/product.js';
-import {cleanser, serum, tonic, oil, moisturiser} from './media/product-media.js';
+import {cleanserInfo, serumInfo, tonicInfo, oilInfo, moisturiserInfo} from './product-info.js';
+
+const handleFavourite = (id) => {
+
+  const product = document.getElementById(id);
+  const wishlist = document.getElementById("wishlist-list");
+
+  if (product.classList.contains("favourited")) {
+    product.classList.remove("favourited");
+    return;
+  }
+        
+  product.classList.add("favourited");
+}
 
 function App() {
 
@@ -15,6 +28,11 @@ function App() {
         </div>
       </header>
       <main>
+        <div className="wishlist">
+          <ul id="wishlist-list">
+
+          </ul>
+        </div>
         <div className="banner">
         
         </div>
@@ -22,53 +40,38 @@ function App() {
 
           <Product 
             productId={0}
-            productName="Cleanser" 
-            productPrice={6} 
-            productSize="300ml" 
-            productDescription="Gentle, foaming cleanser designed for all skin types." 
-            productSrc={cleanser}
+            productInfo={cleanserInfo}
+            handleFavourite={() => handleFavourite("product0")}
           />
         
           <Product 
             productId={1}
-            productName="Tonic" 
-            productPrice={5} 
-            productSize="500ml" 
-            productDescription="Refreshing tonic for a clean feel skin." 
-            productSrc={tonic}
+            productInfo={tonicInfo} 
+            handleFavourite={() => handleFavourite("product1")}
           />
 
           <Product 
             productId={2}
-            productName="Serum" 
-            productPrice={12} 
-            productSize="50ml" 
-            productDescription="Packed with vitamins and actives, superbly performing serum for all your needs." 
-            productSrc={serum}
+            productInfo={serumInfo}
+            handleFavourite={() => handleFavourite("product2")}
           />
 
           <Product 
             productId={3}
-            productName="Oil" 
-            productPrice={9} 
-            productSize="50ml" 
-            productDescription="Lightweight and non-sticky moisturisiing oil." 
-            productSrc={oil}
+            productInfo={oilInfo}
+            handleFavourite={() => handleFavourite("product3")}
           />
 
           <Product 
             productId={4}
-            productName="Moisturiser" 
-            productPrice={8} 
-            productSize="90ml" 
-            productDescription="Quick-absorbing, all-purpose moisturiser sutiable for all skin types." 
-            productSrc={moisturiser}
+            productInfo={moisturiserInfo}
+            handleFavourite={() => handleFavourite("product4")}
           />
 
         </div>
       </main>
       <footer>
-        <div className="copyright"><p> © Lily Paczesniak 2023 </p></div>
+        <div className="copyright"><p> © Lily Paczesniak 2023 </p> <p>Photos by <a href="https://www.pexels.com/@ron-lach/" target="blank">Ron Lach</a></p></div>
       </footer>
     </div>
   );

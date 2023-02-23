@@ -5,7 +5,6 @@ import {cleanserInfo, serumInfo, tonicInfo, oilInfo, moisturiserInfo} from './pr
 
 function Product(props) {
 
-    const productId = "product" + props.productId;
     let info;
 
     switch (props.productId) {
@@ -34,18 +33,20 @@ function Product(props) {
     const productDesc = info.description;
     const productSrc = info.media;
 
-        /*if (this.props.productThumbnail) {
+    const productId = "product" + props.productId;
+
+        if (props.thumbnail) {
             return (
                 <div className="product in-list">
-                    <div className="img-container"><img src={this.props.productSrc[0].src} alt={this.props.productSrc[0].alt} /></div>
+                    <div className="img-container"><img src={productSrc[0].src} alt={productSrc[0].alt} /></div>
                     <div className="product-header">
-                        <button className="remove" onClick={this.props.handleRemove}> - </button>
-                        <h3>{productName}</h3>
+                        <h4>{productName}</h4>
                         <p>£{productPrice} | {productSize} </p>
                     </div>
+                    <button className="remove" onClick={props.handleRemove}> x </button>
                 </div>
             )
-        }*/
+        }
 
     return (
         <div className="product" id={productId}>

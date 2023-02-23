@@ -5,7 +5,7 @@ class Product extends React.Component {
     render() {
         return (
             <div className="product">
-                <Carousel productSrc={this.props.productSrc}/>
+                <Carousel productSrc={this.props.productSrc} productId={this.props.productId}/>
                 <div className="product-header">
                     <h3>{this.props.productName}</h3>
                     <p>£{this.props.productPrice} | {this.props.productSize} </p>
@@ -13,7 +13,7 @@ class Product extends React.Component {
                 <p className="description">{this.props.productDescription}</p>
                 <div className="product-buttons">
                     <button className="product-button"> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
-                    <button className="product-button"> <i class="fa-solid fa-heart"></i> Favourite</button>
+                    <button className="product-button"> <i className="fa-solid fa-heart"></i> Favourite</button>
                 </div>
             </div>
         )

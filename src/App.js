@@ -9,7 +9,7 @@ function App() {
         <h1 className="brand-logo">Modest</h1>
         <div className="header-menu">
           <i className="fa-solid fa-circle-user"></i>
-          <i class="fa-solid fa-heart"></i>
+          <i className="fa-solid fa-heart"></i>
           <i className="fa-solid fa-basket-shopping"></i>
         </div>
       </header>
@@ -20,6 +20,7 @@ function App() {
         <div className="product-layout">
 
           <Product 
+            productId={0}
             productName="Cleanser" 
             productPrice={6} 
             productSize="300ml" 
@@ -28,6 +29,7 @@ function App() {
           />
         
           <Product 
+            productId={1}
             productName="Tonic" 
             productPrice={5} 
             productSize="500ml" 
@@ -36,6 +38,7 @@ function App() {
           />
 
           <Product 
+            productId={2}
             productName="Serum" 
             productPrice={12} 
             productSize="50ml" 
@@ -44,6 +47,7 @@ function App() {
           />
 
           <Product 
+            productId={3}
             productName="Oil" 
             productPrice={9} 
             productSize="50ml" 
@@ -52,6 +56,7 @@ function App() {
           />
 
           <Product 
+            productId={4}
             productName="Moisturiser" 
             productPrice={8} 
             productSize="90ml" 

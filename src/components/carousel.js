@@ -1,7 +1,6 @@
 
 export default function Carousel(props) {
-    const slide = document.getElementsByClassName('slide');
-    const slidesContainer = document.getElementById('slides-container');
+
     return (
         <div className="carousel">
             <section className="slider-wrapper">
@@ -11,13 +10,13 @@ export default function Carousel(props) {
                 <div className="img-container slide"><img src={props.productSrc[2].src} alt={props.productSrc[2].alt} /></div>
             </div>
             <button className="slide-arrow" id="slide-arrow-prev" onClick={ () => {
-                const slideWidth = slide.clientWidth;
-                slidesContainer.scrollLeft -= slideWidth;
+                const slide = document.getElementsByClassName('slides-container')[props.productId];
+                slide.scrollLeft -= slide.clientWidth;
             }}> <i className="fa-solid fa-chevron-left"></i>
             </button>
             <button className="slide-arrow" id="slide-arrow-next" onClick={ () => {
-                const slideWidth = slide.clientWidth;
-                slidesContainer.scrollLeft += slideWidth;
+                const slide = document.getElementsByClassName('slides-container')[props.productId];
+                slide.scrollLeft += slide.clientWidth;
             }}> <i className="fa-solid fa-chevron-right"></i>
             </button>
             </section>

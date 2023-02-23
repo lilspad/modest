@@ -1,7 +1,9 @@
 $main-color: #ffffff;
 $font-color: #000000;
 $info-color: #818181;
+$background-color: #dad9d9;
 $accent-color: #f0c7d5;
+$heart-color: #f07ca2;
 
 $main-font-family: 'Quicksand', sans-serif;
 $accent-font-family: 'Akaya Telivigala', cursive;
@@ -32,6 +34,11 @@ $accent-font-family: 'Akaya Telivigala', cursive;
         display: flex;
         width: 10%;
         justify-content: space-evenly;
+    }
+
+    i:hover {
+        color: $accent-color;
+        cursor: pointer;
     }
 }
 
@@ -156,5 +163,25 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     #slide-arrow-next {
         right: 0;
         padding: 1.55rem 0.75rem;
+    }
+}
+
+.favourited {
+    .product-button.favourite {
+        background-color: $heart-color;
+    }
+}
+
+footer {
+    width: 100vw;
+    height: 10vh;
+    background-color: $background-color;
+    .copyright {
+        width: 100%;
+        text-align: center;
+    }
+    p {
+        font: 0.8rem $main-font-family;
+        padding-top: 2rem;
     }
 }

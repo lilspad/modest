@@ -8,6 +8,15 @@ $heart-color: #f07ca2;
 $main-font-family: 'Quicksand', sans-serif;
 $accent-font-family: 'Akaya Telivigala', cursive;
 
+@mixin reset-a {
+    text-decoration: none;
+    color: $heart-color;
+}
+
+@mixin reset-list {
+    list-style: none;
+}
+
 @mixin buttons {
     padding: 10px 20px;
     border: 0.5px solid black;
@@ -18,6 +27,7 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 @mixin headers {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 * {
@@ -27,8 +37,13 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 
 .App-header {
     @include headers;
-    align-items: center;
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
     padding: 10px 50px;
+    background-color: $main-color;
 
     .header-menu {
         display: flex;
@@ -46,6 +61,48 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     font: 3rem $accent-font-family;
 }
 
+main {
+    margin-top: 100px;
+}
+
+.wishlist {
+    height: 100vh;
+    width: 40vw;
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    top: 10vh;
+    background-color: $main-color;
+    font-family: $main-font-family;
+
+    ul {
+        @include reset-list;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    .product {
+        width: 15vw;
+        height: 50vh;
+    }
+
+    .img-container {
+        position: relative;
+        height: 20vh;
+        width: 100%;
+        margin: auto;
+    }
+    
+    img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
+
 .product-layout {
     display: flex;
     flex-wrap: wrap;
@@ -58,7 +115,7 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 
     font-family: $main-font-family;
     width: 25vw;
-    height: 70vh;
+    height: 80vh;
 
     .product-header {
         @include headers;
@@ -92,6 +149,7 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 }
 
 .carousel {
+
     .slider-wrapper {
             margin: 1rem;
             position: relative;
@@ -120,7 +178,7 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 
     .img-container {
         position: relative;
-        height: 40vh;
+        height: 50vh;
         width: 100%;
         margin: auto;
     }
@@ -156,13 +214,12 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     }
 
     #slide-arrow-prev {
-        padding: 1.75rem 0.75rem;
-        border-radius: 0 2rem 2rem 0;
+        padding: 1.5rem 0.75rem;
     }
 
     #slide-arrow-next {
         right: 0;
-        padding: 1.55rem 0.75rem;
+        padding: 1.5rem 0.75rem;
     }
 }
 
@@ -178,10 +235,18 @@ footer {
     background-color: $background-color;
     .copyright {
         width: 100%;
-        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
     }
     p {
         font: 0.8rem $main-font-family;
         padding-top: 2rem;
+    }
+    a {
+        @include reset-a;
+    }
+
+    a:hover {
+        color: $main-color;
     }
 }

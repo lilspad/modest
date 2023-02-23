@@ -1,18 +1,49 @@
 import './style.scss';
 import Product from './components/product.js';
-import {cleanserInfo, serumInfo, tonicInfo, oilInfo, moisturiserInfo} from './product-info.js';
+
+var wishlist = [];
+
+const addToWishlist = (i) => {
+    wishlist.push(<li><Product productId={i} thumbnail={true} key={i}/></li>)
+}
+
+const removeFromWishlist = (i) => {
+    const index = wishlist.indexOf(<li><Product productId={i} thumbnail={true} key={i}/></li>)
+    wishlist.splice(index, 1);
+}
 
 const handleFavourite = (id) => {
 
-  const product = document.getElementById(id);
-  const wishlist = document.getElementById("wishlist-list");
+  const product = document.getElementById("product" + id);
+  const button = document.getElementsByClassName("favourite")[id];
 
   if (product.classList.contains("favourited")) {
     product.classList.remove("favourited");
+    button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
+    removeFromWishlist(id);
     return;
   }
         
   product.classList.add("favourited");
+  button.innerHTML = '<i class="fa-solid fa-heart"></i> Remove';
+  addToWishlist(id);
+
+}
+
+const handleWishlist = () => {
+
+  const wishlist = document.getElementById("wishlist");
+  const overlay = document.getElementById("overlay");
+
+  if (wishlist.classList.contains('hidden')) {
+    wishlist.style.display = "block";
+    wishlist.classList.remove("hidden");
+    overlay.style.display = "block";
+  } else {
+    wishlist.style.display = "none";
+    wishlist.classList.add("hidden");
+    overlay.style.display = "none";
+  }
 }
 
 function App() {
@@ -23,49 +54,42 @@ function App() {
         <h1 className="brand-logo">Modest</h1>
         <div className="header-menu">
           <i className="fa-solid fa-circle-user"></i>
-          <i className="fa-solid fa-heart"></i>
+          <div onClick={handleWishlist}><i className="fa-solid fa-heart"></i></div>
           <i className="fa-solid fa-basket-shopping"></i>
         </div>
       </header>
       <main>
-        <div className="wishlist">
+        <div className="wishlist hidden" id="wishlist" style={{display: 'none'}}>
           <ul id="wishlist-list">
-
+            
           </ul>
         </div>
-        <div className="banner">
-        
-        </div>
+        <div className="overlay" id="overlay" style={{display: 'none'}} onClick={handleWishlist}></div>
         <div className="product-layout">
 
           <Product 
             productId={0}
-            productInfo={cleanserInfo}
-            handleFavourite={() => handleFavourite("product0")}
+            handleFavourite={() => handleFavourite(0)}
           />
         
           <Product 
             productId={1}
-            productInfo={tonicInfo} 
-            handleFavourite={() => handleFavourite("product1")}
+            handleFavourite={() => handleFavourite(1)}
           />
 
           <Product 
             productId={2}
-            productInfo={serumInfo}
-            handleFavourite={() => handleFavourite("product2")}
+            handleFavourite={() => handleFavourite(2)}
           />
 
           <Product 
             productId={3}
-            productInfo={oilInfo}
-            handleFavourite={() => handleFavourite("product3")}
+            handleFavourite={() => handleFavourite(3)}
           />
 
           <Product 
             productId={4}
-            productInfo={moisturiserInfo}
-            handleFavourite={() => handleFavourite("product4")}
+            handleFavourite={() => handleFavourite(4)}
           />
 
         </div>

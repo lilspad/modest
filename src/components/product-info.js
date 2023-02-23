@@ -1,4 +1,4 @@
-import {cleanserMedia, serumMedia, tonicMedia, oilMedia, moisturiserMedia} from './media/product-media.js';
+import {cleanserMedia, serumMedia, tonicMedia, oilMedia, moisturiserMedia} from './product-media.js';
 
 const cleanserInfo = {
     name: "Cleanser",

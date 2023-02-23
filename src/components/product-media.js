@@ -1,22 +1,22 @@
-import cleanser1 from './products/cleanser1.jpg';
-import cleanser2 from './products/cleanser2.jpg';
-import cleanser3 from './products/cleanser3.jpg';
+import cleanser1 from '../media/products/cleanser1.jpg';
+import cleanser2 from '../media/products/cleanser2.jpg';
+import cleanser3 from '../media/products/cleanser3.jpg';
 
-import tonic1 from './products/tonic1.jpg';
-import tonic2 from './products/tonic2.jpg';
-import tonic3 from './products/tonic3.jpg';
+import tonic1 from '../media/products/tonic1.jpg';
+import tonic2 from '../media/products/tonic2.jpg';
+import tonic3 from '../media/products/tonic3.jpg';
 
-import serum1 from './products/serum1.jpg';
-import serum2 from './products/serum2.jpg';
-import serum3 from './products/serum3.jpg';
+import serum1 from '../media/products/serum1.jpg';
+import serum2 from '../media/products/serum2.jpg';
+import serum3 from '../media/products/serum3.jpg';
 
-import oil1 from './products/oil1.jpg';
-import oil2 from './products/oil2.jpg';
-import oil3 from './products/oil3.jpg';
+import oil1 from '../media/products/oil1.jpg';
+import oil2 from '../media/products/oil2.jpg';
+import oil3 from '../media/products/oil3.jpg';
 
-import cream1 from './products/cream1.jpg';
-import cream2 from './products/cream2.jpg';
-import cream3 from './products/cream3.jpg';
+import cream1 from '../media/products/cream1.jpg';
+import cream2 from '../media/products/cream2.jpg';
+import cream3 from '../media/products/cream3.jpg';
 
 const cleanserMedia = [
     {

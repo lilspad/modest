@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import Wishlist from './components/wishlist.js';
+import Basket from './components/basket.js';
 import ProductList from './components/product-list.js';
 import Product from './components/products/product.js';
 class App extends React.Component {
@@ -8,7 +9,12 @@ class App extends React.Component {
     super(props);
     this.state = {
       productsAmount: 5,
-      favourites: []
+      favourites: [],
+      basket: {
+        amount: 0,
+        items: [],
+        total: 0
+      }
     }
   }
 
@@ -22,15 +28,17 @@ class App extends React.Component {
 
           <h1 className="brand-logo">Modest</h1>
 
-          <div className="header-menu">
+          <div className="header-menu" id="header-menu">
 
             <i className="fa-solid fa-circle-user"></i>
 
-            <div onClick={this.handleWishlist}>
-              <i className="fa-solid fa-heart"></i>
+            <div onClick={(e) => this.handleMenuEvent(e)}>
+              <i className="fa-solid fa-heart" id="wishlist-icon"></i>
             </div>
 
-            <i className="fa-solid fa-basket-shopping"></i>
+            <div onClick={(e) => this.handleMenuEvent(e)}>
+              <i className="fa-solid fa-basket-shopping" id="basket-icon" ></i>
+            </div>
 
           </div>
 
@@ -38,8 +46,9 @@ class App extends React.Component {
         <main id="main">
 
           <Wishlist favourites={this.state.favourites} />
+          <Basket basketStats={this.state.basket} />
 
-          <div className="overlay" id="overlay" style={{display: 'none'}} onClick={this.handleWishlist}></div>
+          <div className="overlay hidden" id="overlay" onClick={() => this.handleOverlay}></div>
 
           <div className="product-layout">
 
@@ -108,21 +117,36 @@ class App extends React.Component {
     this.addToWishlist(id);
   }
 
-  handleWishlist() {
-
-    const wishlist = document.getElementById("wishlist");
+  handleMenuEvent(event) {
+    
+    const menu = document.getElementById("header-menu");
+    const element = document.getElementById(event.target.id.replace("-icon", ""));
     const overlay = document.getElementById("overlay");
-
-    if (wishlist.classList.contains('hidden')) {
-      wishlist.style.display = "block";
-      wishlist.classList.remove("hidden");
-      overlay.style.display = "block";
+    
+    if (menu.classList.contains('menuOn')) {
+      switch (element.id) {
+        case "wishlist":
+          document.getElementById("basket").classList.add('hidden');
+          break;
+        case "basket":
+          document.getElementById("wishlist").classList.add('hidden');
+          break;
+        default:
+          break;
+      }
+    }
+    
+    if (element.classList.contains('hidden')) {
+      menu.classList.add("menuOn");
+      element.classList.remove("hidden");
+      overlay.classList.remove("hidden");
     } else {
-      wishlist.style.display = "none";
-      wishlist.classList.add("hidden");
-      overlay.style.display = "none";
+      menu.classList.remove("menuOn");
+      element.classList.add("hidden");
+      overlay.classList.add("hidden");
     }
   }
+  
 }
 
 export default App;

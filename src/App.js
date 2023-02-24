@@ -1,61 +1,59 @@
 import React from 'react';
 import './style.scss';
 import Wishlist from './components/wishlist.js';
+import ProductList from './components/product-list.js';
 import Product from './components/products/product.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productsAmount: 5,
       favourites: []
     }
   }
 
   render() {
+
+    const productHandlers = [this.handleFavourite];
+
     return (
       <div className="App">
         <header className="App-header">
+
           <h1 className="brand-logo">Modest</h1>
+
           <div className="header-menu">
+
             <i className="fa-solid fa-circle-user"></i>
-            <div onClick={this.handleWishlist}><i className="fa-solid fa-heart"></i></div>
+
+            <div onClick={this.handleWishlist}>
+              <i className="fa-solid fa-heart"></i>
+            </div>
+
             <i className="fa-solid fa-basket-shopping"></i>
+
           </div>
+
         </header>
         <main id="main">
+
           <Wishlist favourites={this.state.favourites} />
+
           <div className="overlay" id="overlay" style={{display: 'none'}} onClick={this.handleWishlist}></div>
+
           <div className="product-layout">
 
-/* To do: make a ProductList comp to render products through iteration to avoid this repetition */
-            <Product 
-              productId={0}
-              handleFavourite={() => this.handleFavourite(0)}
-            />
-          
-            <Product 
-              productId={1}
-              handleFavourite={() => this.handleFavourite(1)}
-            />
-
-            <Product 
-              productId={2}
-              handleFavourite={() => this.handleFavourite(2)}
-            />
-
-            <Product 
-              productId={3}
-              handleFavourite={() => this.handleFavourite(3)}
-            />
-
-            <Product 
-              productId={4}
-              handleFavourite={() => this.handleFavourite(4)}
-            />
+            <ProductList productsAmount={this.state.productsAmount} handleFavourite={this.handleFavourite} />
 
           </div>
+
         </main>
         <footer>
-          <div className="copyright"><p> © Lily Paczesniak 2023 </p> <p>Photos by <a href="https://www.pexels.com/@ron-lach/" target="blank">Ron Lach</a></p></div>
+
+          <div className="copyright">
+            <p> © Lily Paczesniak 2023 </p> <p>Photos by <a href="https://www.pexels.com/@ron-lach/" target="blank">Ron Lach</a></p>
+          </div>
+
         </footer>
       </div>
     );

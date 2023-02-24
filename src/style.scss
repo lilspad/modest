@@ -161,6 +161,7 @@ main {
     font-family: $main-font-family;
     width: 25vw;
     height: 80vh;
+    margin: auto;
 
     .product-header {
         @include headers;

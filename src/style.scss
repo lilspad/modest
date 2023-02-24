@@ -243,6 +243,11 @@ main {
         margin: auto;
     }
 
+    .shipping {
+        font-size: 0.8rem;
+        color: $info-color;
+    }
+
     .basket-buttons {
         display: flex;
         justify-content: center;

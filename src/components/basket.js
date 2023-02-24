@@ -7,6 +7,11 @@ function Basket(props) {
             <ul id="basket-list">
                 {props.basketStats.items}
             </ul>
+            <p>Total: £{props.basketStats.total}</p> 
+            <div className="basket-buttons">
+                <button className="checkout"> Checkout </button>
+                <button className="clear"> Clear basket </button>
+            </div>
         </div>
     )
 }

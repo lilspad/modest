@@ -22,8 +22,11 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     border: 1.5px solid black;
     border-radius: 30px;
     background-color: $main-color;
+    transition: all 200ms;
     &:hover {
-        background-color: $accent-color;    
+        background-color: $accent-color;
+        border-color: $accent-color;
+        color: $main-color;    
     }
 }
 
@@ -80,6 +83,10 @@ $accent-font-family: 'Akaya Telivigala', cursive;
         width: 100%;
         object-fit: cover;
         border-radius: 10px;
+    }
+
+    p {
+        text-align: center;
     }
 }
 
@@ -204,6 +211,11 @@ main {
         margin: auto;
     }
 
+    .img-container {
+        width: 50%;
+        height: 70%;
+    }
+
     input {
         height: 2rem;
         width: 3rem;
@@ -211,29 +223,52 @@ main {
         text-align: center;
         border: 1.5px solid $font-color;
         border-radius: 30px;
-        &:focus-visible {
+        &:focus-visible, &:hover {
             outline: none;
-            border: 1.5px solid $accent-color;
+            border-color: $accent-color;
         }
         &[type=number]::-webkit-inner-spin-button {
             display: none;
         }
     }
 
-    button {
+    button.remove {
         @include buttons;
         &:hover {
             background-color: $main-color;
-            border: 1.5px solid $accent-color;
+            border-color: $accent-color;
             color: $accent-color;
         }
         height: 4rem;
         margin: auto;
     }
 
-    .img-container {
-        width: 50%;
-        height: 70%;
+    .basket-buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    button.checkout {
+        @include buttons;
+        &:hover {
+            background-color: $main-color;
+            border-color: $heart-color;
+            color: $heart-color;
+        }
+        margin: 1rem;
+    }
+
+    button.clear {
+        @include buttons;
+        background-color: $background-color;
+        color: $main-color;
+        border-color: $background-color;
+        &:hover {
+            background-color: $main-color;
+            border-color: $heart-color;
+            color: $heart-color; 
+        }
+        margin: 1rem 0;
     }
 }
 
@@ -352,6 +387,8 @@ main {
 .favourited {
     .product-button.favourite {
         background-color: $heart-color;
+        border-color: $heart-color;
+        color: $main-color;
     }
 }
 

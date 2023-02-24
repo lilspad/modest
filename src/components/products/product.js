@@ -58,7 +58,7 @@ function Product(props) {
             </div>
             <p className="description">{productDesc}</p>
             <div className="product-buttons" style={info === defaultInfo ? {display: 'none'} : {}}>
-                <button className="product-button basket" onClick={props.handleBasket}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
+                <button className="product-button addToBasket" onClick={props.handleBasket}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
                 <button className="product-button favourite" id={"fav-button" + id} onClick={props.productHandlers[0]}> <i className="fa-solid fa-heart"></i> Favourite</button>
             </div>
         </div>

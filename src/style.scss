@@ -48,6 +48,10 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 * {
     margin: 0;
     padding: 0;
+
+    .hidden {
+        display: none;
+    }
 }
 
 .App-header {
@@ -91,7 +95,7 @@ main {
     }
 }
 
-.wishlist {
+.wishlist, .basket {
     height: 100vh;
     width: 40vw;
     position: fixed;

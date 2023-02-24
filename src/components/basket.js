@@ -7,10 +7,11 @@ function Basket(props) {
             <ul id="basket-list">
                 {props.basketStats.items}
             </ul>
-            <p>Total: £{props.basketStats.total}</p> 
-            <div className="basket-buttons">
+            <p style={props.basketStats.amount === 0 ? {display: "none"} : {}}>Total: £{props.basketStats.total} 
+            <br></br> <span className="shipping">Shipping calculated at checkout</span></p> 
+            <div className="basket-buttons" style={props.basketStats.amount === 0 ? {display: "none"} : {}}>
                 <button className="checkout"> Checkout </button>
-                <button className="clear"> Clear basket </button>
+                <button className="clear" onClick={props.handleClear}> Clear basket </button>
             </div>
         </div>
     )

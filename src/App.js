@@ -50,7 +50,7 @@ class App extends React.Component {
         <main id="main">
 
           <Wishlist favourites={this.state.favourites} />
-          <Basket basketStats={this.state.basket} />
+          <Basket basketStats={this.state.basket} handleClear={() => this.handleClear()} />
 
           <div className="overlay hidden" id="overlay" onClick={this.handleOverlay}></div>
 
@@ -177,14 +177,28 @@ class App extends React.Component {
 
     basketItems.push(item);
 
-    this.setState(prevState => ({
-      basket: {
-        amount: prevState.basket.amount + 1,
-        items: basketItems,
-        total: prevState.basket.total + 1
-      }
-    }))
+    this.setState(
+      prevState => ({
+        basket: {
+          amount: prevState.basket.amount + 1,
+          items: basketItems,
+          total: prevState.basket.total + 1
+        }
+      })
+    )
+  }
 
+  handleClear() {
+    if (!window.confirm("Are you sure?")) {
+      return;
+    }
+    this.setState({
+      basket: {
+        amount: 0,
+        items: [],
+        total: 0
+      }
+    })
   }
 
 }

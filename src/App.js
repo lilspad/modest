@@ -48,7 +48,7 @@ class App extends React.Component {
           <Wishlist favourites={this.state.favourites} />
           <Basket basketStats={this.state.basket} />
 
-          <div className="overlay hidden" id="overlay" onClick={() => this.handleOverlay}></div>
+          <div className="overlay hidden" id="overlay" onClick={this.handleOverlay}></div>
 
           <div className="product-layout">
 
@@ -123,20 +123,20 @@ class App extends React.Component {
     const element = document.getElementById(event.target.id.replace("-icon", ""));
     const overlay = document.getElementById("overlay");
     
-    if (menu.classList.contains('menuOn')) {
+    if (menu.classList.contains("menuOn")) {
       switch (element.id) {
         case "wishlist":
-          document.getElementById("basket").classList.add('hidden');
+          document.getElementById("basket").classList.add("hidden");
           break;
         case "basket":
-          document.getElementById("wishlist").classList.add('hidden');
+          document.getElementById("wishlist").classList.add("hidden");
           break;
         default:
           break;
       }
     }
     
-    if (element.classList.contains('hidden')) {
+    if (element.classList.contains("hidden")) {
       menu.classList.add("menuOn");
       element.classList.remove("hidden");
       overlay.classList.remove("hidden");
@@ -146,7 +146,17 @@ class App extends React.Component {
       overlay.classList.add("hidden");
     }
   }
-  
+
+  handleOverlay() {
+    const arr = []
+
+    arr.push(document.getElementById("wishlist"))
+    arr.push(document.getElementById("basket"))   
+    arr.push(document.getElementById("overlay"))
+
+    arr.forEach((item) => item.classList.add("hidden"));
+  }
+
 }
 
 export default App;

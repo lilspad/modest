@@ -21,11 +21,12 @@ class App extends React.Component {
             <i className="fa-solid fa-basket-shopping"></i>
           </div>
         </header>
-        <main>
+        <main id="main">
           <Wishlist favourites={this.state.favourites} />
           <div className="overlay" id="overlay" style={{display: 'none'}} onClick={this.handleWishlist}></div>
           <div className="product-layout">
 
+/* To do: make a ProductList comp to render products through iteration to avoid this repetition */
             <Product 
               productId={0}
               handleFavourite={() => this.handleFavourite(0)}

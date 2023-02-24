@@ -10,4 +10,6 @@ function Wishlist(props) {
     )
 }
 
+/* To do: scroll is dodgy, as it mostly interacts with the rest of the page, also cannot see info of the last product even if scrolled */
+
 export default Wishlist;

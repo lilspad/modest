@@ -38,13 +38,13 @@ function Product(props) {
 
         if (props.thumbnail) {
             return (
-                <div className="product in-list" id={productId + "in-list"}>
+                <div className="product">
                     <div className="img-container"><img src={productSrc[0].src} alt={productSrc[0].alt} /></div>
                     <div className="product-header">
-                        <h4>{productName}</h4>
-                        <p>£{productPrice} | {productSize} </p>
+                        <h4 onClick={props.handleClick} >{productName}</h4>
+                        <p>£{productPrice}</p>
                     </div>
-                    <button className="remove" onClick={props.handleRemove}> x </button>
+                    {props.button ? props.button : ""}
                 </div>
             )
         }
@@ -58,7 +58,7 @@ function Product(props) {
             </div>
             <p className="description">{productDesc}</p>
             <div className="product-buttons" style={info === defaultInfo ? {display: 'none'} : {}}>
-                <button className="product-button addToBasket" onClick={props.handleBasket}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
+                <button className="product-button addToBasket" id={"atbsk-button" + id} onClick={props.productHandlers[1]}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
                 <button className="product-button favourite" id={"fav-button" + id} onClick={props.productHandlers[0]}> <i className="fa-solid fa-heart"></i> Favourite</button>
             </div>
         </div>

@@ -19,9 +19,12 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 
 @mixin buttons {
     padding: 10px 20px;
-    border: 0.5px solid black;
+    border: 1.5px solid black;
     border-radius: 30px;
     background-color: $main-color;
+    &:hover {
+        background-color: $accent-color;    
+    }
 }
 
 @mixin headers {
@@ -43,6 +46,41 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     opacity: 0.5;
     transition: opacity 100ms;
     z-index: 5;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@mixin pop-up-section {
+    height: 100vh;
+    width: 40vw;
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    top: 10vh;
+    background-color: $main-color;
+    font-family: $main-font-family;
+    overflow: scroll;
+    h2 {
+        text-align: center;
+        padding: 2rem;
+    }
+    .product {
+        position: relative;
+    }
+
+    .img-container {
+        position: relative;
+        margin: auto;
+    }
+    
+    img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
 }
 
 * {
@@ -68,6 +106,12 @@ $accent-font-family: 'Akaya Telivigala', cursive;
         display: flex;
         width: 10%;
         justify-content: space-evenly;
+        font-family: $main-font-family;
+        p {
+            display: inline;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
     }
 
     i:hover {
@@ -95,21 +139,8 @@ main {
     }
 }
 
-.wishlist, .basket {
-    height: 100vh;
-    width: 40vw;
-    position: fixed;
-    z-index: 100;
-    right: 0;
-    top: 10vh;
-    background-color: $main-color;
-    font-family: $main-font-family;
-    overflow: scroll;
-    
-    h2 {
-        text-align: center;
-        padding: 2rem;
-    }
+.wishlist {
+    @include pop-up-section;
 
     ul {
         @include reset-list;
@@ -120,23 +151,16 @@ main {
 
     .product {
         width: 15vw;
-        height: 30vh;
-        position: relative;
+        height: 25vh;
+        h4:hover {
+            color: $accent-color;
+            cursor: pointer;
+        }
     }
 
     .img-container {
-        position: relative;
         height: 20vh;
         width: 100%;
-        margin: auto;
-    }
-    
-    img {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 10px;
     }
 
     .remove {
@@ -147,8 +171,69 @@ main {
         right: 0;
     }
 
-    .remove:hover {
-        opacity: 1;
+    .addToBasket {
+        @include buttons;
+        &:hover {
+            background-color: $main-color;
+            border: 1.5px solid $accent-color;
+            color: $accent-color;
+        }
+        width: 50%;
+        margin: 0 calc(15vw / 4);
+        margin-bottom: 2rem;
+    }
+}
+
+.basket {
+    @include pop-up-section;
+
+    .product {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        height: 20vh;
+        h4:hover {
+            color: $accent-color;
+            cursor: pointer;
+        }
+    }
+
+    .product-inbasket {
+        display: flex;
+        width: 90%;
+        margin: auto;
+    }
+
+    input {
+        height: 2rem;
+        width: 3rem;
+        margin: auto;
+        text-align: center;
+        border: 1.5px solid $font-color;
+        border-radius: 30px;
+        &:focus-visible {
+            outline: none;
+            border: 1.5px solid $accent-color;
+        }
+        &[type=number]::-webkit-inner-spin-button {
+            display: none;
+        }
+    }
+
+    button {
+        @include buttons;
+        &:hover {
+            background-color: $main-color;
+            border: 1.5px solid $accent-color;
+            color: $accent-color;
+        }
+        height: 4rem;
+        margin: auto;
+    }
+
+    .img-container {
+        width: 50%;
+        height: 70%;
     }
 }
 
@@ -194,9 +279,14 @@ main {
         @include buttons;
     }
 
-    .product-button:hover {
-        background-color: $accent-color;
+    .addToBasket {
+
+        &:active {
+		background-color: $heart-color;
+	    }
+
     }
+
 }
 
 .carousel {
@@ -249,10 +339,6 @@ main {
         bottom: 0;
     }
 
-    .slide-arrow:hover {
-        opacity: 1;
-    }
-
     #slide-arrow-prev {
         padding: 1.5rem 0.75rem;
     }
@@ -284,9 +370,8 @@ footer {
     }
     a {
         @include reset-a;
-    }
-
-    a:hover {
-        color: $main-color;
+        &:hover {
+            color: $main-color;
+        }
     }
 }

@@ -20,9 +20,10 @@ class App extends React.Component {
 
   render() {
 
-    const productHandlers = [(e) => this.handleFavourite(e)];
+    const productHandlers = [(e) => this.handleFavourite(e), (e) => this.handleAddToBasket(e)];
 
     return (
+
       <div className="App">
         <header className="App-header">
 
@@ -30,7 +31,9 @@ class App extends React.Component {
 
           <div className="header-menu" id="header-menu">
 
-            <i className="fa-solid fa-circle-user"></i>
+            <div>
+              <i className="fa-solid fa-circle-user"></i>
+            </div>
 
             <div onClick={(e) => this.handleMenuEvent(e)}>
               <i className="fa-solid fa-heart" id="wishlist-icon"></i>
@@ -38,6 +41,7 @@ class App extends React.Component {
 
             <div onClick={(e) => this.handleMenuEvent(e)}>
               <i className="fa-solid fa-basket-shopping" id="basket-icon" ></i>
+              <p>{this.state.basket.amount === 0 ? "" : "(" + this.state.basket.amount + ")"}</p>
             </div>
 
           </div>
@@ -68,62 +72,13 @@ class App extends React.Component {
     );
   }
 
-  addToWishlist(i) {
-    const wishlist = this.state.favourites;
-    const product = document.getElementById("product" + i);
-    const button = document.getElementById("fav-button" + i);
-    
-    wishlist.push(<li key={i} id={"item" + i}><Product productId={i} thumbnail={true} handleRemove={() => this.removeFromWishlist(i)}/></li>)
-
-    this.setState({
-      favourites: wishlist
-    })
-
-    product.classList.add("favourited");
-    button.innerHTML = '<i class="fa-solid fa-heart"></i> Remove';
-  }
-
-  removeFromWishlist(i) {
-    const wishlist = this.state.favourites;
-    const product = document.getElementById("product" + i);
-    const button = document.getElementById("fav-button" + i);
-
-    for (let j = 0; j < wishlist.length; j++) {
-      if (wishlist[j].props.id === "item" + i) {
-        wishlist.splice(j, 1);
-      }
-    }
-
-    this.setState({
-      favourites: wishlist
-    })
-
-    product.classList.remove("favourited");
-    button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
-  }
-
-  handleFavourite(event) {
-
-    const id = Math.floor(event.target.id.replace("fav-button", ""));
-    console.log(id)
-
-    const product = document.getElementById("product" + id);
-
-    if (product.classList.contains("favourited")) {
-      this.removeFromWishlist(id);
-      return;
-    }
-        
-    this.addToWishlist(id);
-  }
-
   handleMenuEvent(event) {
     
     const menu = document.getElementById("header-menu");
     const element = document.getElementById(event.target.id.replace("-icon", ""));
     const overlay = document.getElementById("overlay");
     
-    if (menu.classList.contains("menuOn")) {
+    if (menu.classList.contains("menuOn")) { 
       switch (element.id) {
         case "wishlist":
           document.getElementById("basket").classList.add("hidden");
@@ -155,6 +110,81 @@ class App extends React.Component {
     arr.push(document.getElementById("overlay"))
 
     arr.forEach((item) => item.classList.add("hidden"));
+  }
+
+  addToWishlist(i) {
+    const wishlist = this.state.favourites;
+    const product = document.getElementById("product" + i);
+    const button = document.getElementById("fav-button" + i);
+    
+    wishlist.push(
+      <li key={i} id={"item" + i}>
+        <Product productId={i} thumbnail={true} button={<button className="remove" onClick={() => this.removeFromWishlist(i)}> x </button>} handleClick={this.handleOverlay} />
+        <button className="product-button addToBasket" id={"atbsk-button" + i} onClick={(e) => this.handleAddToBasket(e)}> <i className="fa-solid fa-basket-shopping"></i></button>
+      </li>)
+
+    this.setState({
+      favourites: wishlist
+    })
+
+    product.classList.add("favourited");
+    button.innerHTML = '<i class="fa-solid fa-heart"></i> Remove';
+  }
+
+  removeFromWishlist(i) {
+    const wishlist = this.state.favourites;
+    const product = document.getElementById("product" + i);
+    const button = document.getElementById("fav-button" + i);
+
+    for (let j = 0; j < wishlist.length; j++) {
+      if (wishlist[j].props.id === "item" + i) {
+        wishlist.splice(j, 1);
+      }
+    }
+
+    this.setState({
+      favourites: wishlist
+    })
+
+    product.classList.remove("favourited");
+    button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
+  }
+
+  handleFavourite(event) {
+
+    const id = Math.floor(event.target.id.replace("fav-button", ""));
+    const product = document.getElementById("product" + id);
+
+    if (product.classList.contains("favourited")) {
+      this.removeFromWishlist(id);
+      return;
+    }
+        
+    this.addToWishlist(id);
+  }
+
+  handleAddToBasket(event) {
+    const id = Math.floor(event.target.id.replace("atbsk-button", ""));
+    const item = (
+      <div className="product-inbasket" key={"item" + Math.random()} >
+        <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} />
+        <input type="number" name="quantity"></input>
+        <button className="remove"> <i className="fa-regular fa-trash-can"></i> </button>
+      </div>)
+
+    const basket = this.state.basket;
+    const basketItems = basket.items;
+
+    basketItems.push(item);
+
+    this.setState(prevState => ({
+      basket: {
+        amount: prevState.basket.amount + 1,
+        items: basketItems,
+        total: prevState.basket.total + 1
+      }
+    }))
+
   }
 
 }

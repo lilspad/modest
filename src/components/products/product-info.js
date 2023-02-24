@@ -1,4 +1,12 @@
-import {cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia} from './product-media.js';
+import {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia} from './product-media.js';
+
+const defaultInfo = {
+    name: "Nothing here 👀 ",
+    price: null,
+    size: null,
+    description: "Couldn't find a product, maybe it's invisible?",
+    media: defaultMedia
+}
 
 const cleanserInfo = {
     name: "Cleanser",
@@ -40,4 +48,4 @@ const creamInfo = {
     media: creamMedia
 };
 
-export {cleanserInfo, tonicInfo, serumInfo, oilInfo, creamInfo};
+export {defaultInfo, cleanserInfo, tonicInfo, serumInfo, oilInfo, creamInfo};

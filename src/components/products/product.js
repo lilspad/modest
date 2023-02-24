@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Carousel from './carousel.js';
-import {cleanserInfo, serumInfo, tonicInfo, oilInfo, creamInfo} from './product-info.js';
+import {defaultInfo, cleanserInfo, serumInfo, tonicInfo, oilInfo, creamInfo} from './product-info.js';
 
 function Product(props) {
 
@@ -24,9 +24,8 @@ function Product(props) {
         case 4:
             info = creamInfo;
             break;
-    /* To do: create an actual default card for "item not found" */
         default:
-            info = creamInfo;
+            info = defaultInfo;
     }
 
     const productName = info.name;
@@ -52,13 +51,13 @@ function Product(props) {
 
     return (
         <div className="product" id={productId}>
-            <Carousel productSrc={productSrc} productId={id}/>
+            {info === defaultInfo ? "" : <Carousel productSrc={productSrc} productId={id} />}
             <div className="product-header">
                 <h3>{productName}</h3>
-                <p>£{productPrice} | {productSize} </p>
+                <p style={info === defaultInfo ? {display: 'none'} : {}} >£{productPrice} | {productSize} </p>
             </div>
             <p className="description">{productDesc}</p>
-            <div className="product-buttons">
+            <div className="product-buttons" style={info === defaultInfo ? {display: 'none'} : {}}>
                 <button className="product-button basket" onClick={props.handleBasket}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
                 <button className="product-button favourite" id={"fav-button" + id} onClick={props.productHandlers[0]}> <i className="fa-solid fa-heart"></i> Favourite</button>
             </div>

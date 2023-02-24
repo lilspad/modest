@@ -18,6 +18,13 @@ import cream1 from '../../media/products/cream1.jpg';
 import cream2 from '../../media/products/cream2.jpg';
 import cream3 from '../../media/products/cream3.jpg';
 
+const defaultMedia = [
+    {
+        alt: "",
+        src: ""
+    }
+]
+
 const cleanserMedia = [
     {
         alt: "Product image of cleanser",
@@ -93,4 +100,4 @@ const creamMedia = [
     }
 ];
 
-export {cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia};
+export {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia};

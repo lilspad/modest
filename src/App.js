@@ -1,11 +1,12 @@
 import React from 'react';
 import './style.scss';
+import Wishlist from './components/wishlist.js';
 import Product from './components/products/product.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wishlist: []
+      favourites: []
     }
   }
 
@@ -21,11 +22,7 @@ class App extends React.Component {
           </div>
         </header>
         <main>
-          <div className="wishlist hidden" id="wishlist" style={{display: 'none'}}>
-            <ul id="wishlist-list">
-              
-            </ul>
-          </div>
+          <Wishlist favourites={this.state.favourites} />
           <div className="overlay" id="overlay" style={{display: 'none'}} onClick={this.handleWishlist}></div>
           <div className="product-layout">
 
@@ -64,32 +61,48 @@ class App extends React.Component {
   }
 
   addToWishlist(i) {
-    const wishlist = this.state.wishlist;
-    wishlist.push(<li><Product productId={i} thumbnail={true} key={i}/></li>)
+    const wishlist = this.state.favourites;
+    const product = document.getElementById("product" + i);
+    const button = document.getElementsByClassName("favourite")[i];
+    
+    wishlist.push(<li key={i} id={"item" + i}><Product productId={i} thumbnail={true} handleRemove={() => this.removeFromWishlist(i)}/></li>)
+
+    this.setState({
+      favourites: wishlist
+    })
+
+    product.classList.add("favourited");
+    button.innerHTML = '<i class="fa-solid fa-heart"></i> Remove';
   }
 
   removeFromWishlist(i) {
-    const wishlist = this.state.wishlist;
-    const index = wishlist.indexOf(<li><Product productId={i} thumbnail={true} key={i}/></li>)
-    wishlist.splice(index, 1);
+    const wishlist = this.state.favourites;
+    const product = document.getElementById("product" + i);
+    const button = document.getElementsByClassName("favourite")[i];
+
+    for (let j = 0; j < wishlist.length; j++) {
+      if (wishlist[j].props.id === "item" + i) {
+        wishlist.splice(j, 1);
+      }
+    }
+
+    this.setState({
+      favourites: wishlist
+    })
+
+    product.classList.remove("favourited");
+    button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
   }
 
   handleFavourite(id) {
-
     const product = document.getElementById("product" + id);
-    const button = document.getElementsByClassName("favourite")[id];
 
     if (product.classList.contains("favourited")) {
-      product.classList.remove("favourited");
-      button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
       this.removeFromWishlist(id);
       return;
     }
-          
-    product.classList.add("favourited");
-    button.innerHTML = '<i class="fa-solid fa-heart"></i> Remove';
+        
     this.addToWishlist(id);
-
   }
 
   handleWishlist() {

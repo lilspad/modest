@@ -23,6 +23,7 @@ function Product(props) {
         case 4:
             info = creamInfo;
             break;
+    /* To do: create an actual default card for "item not found" */
         default:
             info = cleanserInfo;
     }

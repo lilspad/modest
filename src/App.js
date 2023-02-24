@@ -14,7 +14,7 @@ class App extends React.Component {
 
   render() {
 
-    const productHandlers = [this.handleFavourite];
+    const productHandlers = [(e) => this.handleFavourite(e)];
 
     return (
       <div className="App">
@@ -43,7 +43,7 @@ class App extends React.Component {
 
           <div className="product-layout">
 
-            <ProductList productsAmount={this.state.productsAmount} handleFavourite={this.handleFavourite} />
+            <ProductList productsAmount={this.state.productsAmount} productHandlers={productHandlers} />
 
           </div>
 
@@ -62,7 +62,7 @@ class App extends React.Component {
   addToWishlist(i) {
     const wishlist = this.state.favourites;
     const product = document.getElementById("product" + i);
-    const button = document.getElementsByClassName("favourite")[i];
+    const button = document.getElementById("fav-button" + i);
     
     wishlist.push(<li key={i} id={"item" + i}><Product productId={i} thumbnail={true} handleRemove={() => this.removeFromWishlist(i)}/></li>)
 
@@ -77,7 +77,7 @@ class App extends React.Component {
   removeFromWishlist(i) {
     const wishlist = this.state.favourites;
     const product = document.getElementById("product" + i);
-    const button = document.getElementsByClassName("favourite")[i];
+    const button = document.getElementById("fav-button" + i);
 
     for (let j = 0; j < wishlist.length; j++) {
       if (wishlist[j].props.id === "item" + i) {
@@ -93,7 +93,11 @@ class App extends React.Component {
     button.innerHTML = '<i class="fa-solid fa-heart"></i> Favourite';
   }
 
-  handleFavourite(id) {
+  handleFavourite(event) {
+
+    const id = Math.floor(event.target.id.replace("fav-button", ""));
+    console.log(id)
+
     const product = document.getElementById("product" + id);
 
     if (product.classList.contains("favourited")) {

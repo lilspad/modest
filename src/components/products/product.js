@@ -6,8 +6,9 @@ import {cleanserInfo, serumInfo, tonicInfo, oilInfo, creamInfo} from './product-
 function Product(props) {
 
     let info;
+    const id = props.productId;
 
-    switch (props.productId) {
+    switch (id) {
         case 0:
             info = cleanserInfo;
             break;
@@ -25,7 +26,7 @@ function Product(props) {
             break;
     /* To do: create an actual default card for "item not found" */
         default:
-            info = cleanserInfo;
+            info = creamInfo;
     }
 
     const productName = info.name;
@@ -34,11 +35,11 @@ function Product(props) {
     const productDesc = info.description;
     const productSrc = info.media;
 
-    const productId = "product" + props.productId;
+    const productId = "product" + id;
 
         if (props.thumbnail) {
             return (
-                <div className="product in-list">
+                <div className="product in-list" id={productId + "in-list"}>
                     <div className="img-container"><img src={productSrc[0].src} alt={productSrc[0].alt} /></div>
                     <div className="product-header">
                         <h4>{productName}</h4>
@@ -51,7 +52,7 @@ function Product(props) {
 
     return (
         <div className="product" id={productId}>
-            <Carousel productSrc={productSrc} productId={props.productId}/>
+            <Carousel productSrc={productSrc} productId={id}/>
             <div className="product-header">
                 <h3>{productName}</h3>
                 <p>£{productPrice} | {productSize} </p>
@@ -59,7 +60,7 @@ function Product(props) {
             <p className="description">{productDesc}</p>
             <div className="product-buttons">
                 <button className="product-button basket" onClick={props.handleBasket}> <i className="fa-solid fa-basket-shopping"></i> Add to basket</button>
-                <button className="product-button favourite" onClick={props.handleFavourite}> <i className="fa-solid fa-heart"></i> Favourite</button>
+                <button className="product-button favourite" id={"fav-button" + id} onClick={props.productHandlers[0]}> <i className="fa-solid fa-heart"></i> Favourite</button>
             </div>
         </div>
     )

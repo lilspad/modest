@@ -54,7 +54,7 @@ function Product(props) {
             {info === defaultInfo ? "" : <Carousel productSrc={productSrc} productId={id} />}
             <div className="product-header">
                 <h3>{productName}</h3>
-                <p style={info === defaultInfo ? {display: 'none'} : {}} >£{productPrice} | {productSize} </p>
+                <p id={"price" + id} style={info === defaultInfo ? {display: 'none'} : {}} >£{productPrice} | {productSize} </p>
             </div>
             <p className="description">{productDesc}</p>
             <div className="product-buttons" style={info === defaultInfo ? {display: 'none'} : {}}>

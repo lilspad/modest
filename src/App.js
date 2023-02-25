@@ -165,24 +165,63 @@ class App extends React.Component {
 
   handleAddToBasket(event) {
     const id = Math.floor(event.target.id.replace("atbsk-button", ""));
+    const price = Math.floor(document.getElementById("price" + id).innerText.match(/\d+/)[0]);
+    let quantity;
+
+    const handleChange = (e) => {
+      e.target.addEventListener("focusout", () => {
+        if (!e.target.value) {
+          e.target.value = quantity;
+        } 
+        var difference = Math.floor(e.target.value - quantity);
+        quantity = e.target.value;
+        this.setState(
+          prevState => ({
+            basket: {
+              amount: prevState.basket.amount + difference,
+              items: prevState.basket.items,
+              total: prevState.basket.total + (price * difference)
+            }
+          })
+        )
+      })
+    }
+    
     const item = (
-      <div className="product-inbasket" key={"item" + Math.random()} >
+      <div className="product-inbasket" key={"item" + id} >
         <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} />
-        <input type="number" name="quantity"></input>
+        <input id={"input" + id} type="number" name="quantity" value={quantity} onChange={handleChange}></input>
         <button className="remove"> <i className="fa-regular fa-trash-can"></i> </button>
-      </div>)
+      </div>
+    )
 
     const basket = this.state.basket;
     const basketItems = basket.items;
 
-    basketItems.push(item);
+/* To do: there has got to be a better way to do this!!! */
+    const isAlready = () => {
+      let bool = false;
+      basketItems.forEach(element => {
+        if (element.key === item.key) {
+          bool = true;
+        } 
+      })
+      return bool;
+    }
+    
+    if (isAlready()) {
+      document.getElementById("input" + id).value ++;
+    } else {
+      quantity = 1;
+      basketItems.push(item);
+    }
 
     this.setState(
       prevState => ({
         basket: {
           amount: prevState.basket.amount + 1,
           items: basketItems,
-          total: prevState.basket.total + 1
+          total: prevState.basket.total + price
         }
       })
     )

@@ -10,6 +10,10 @@ import serum1 from '../../media/products/serum1.jpg';
 import serum2 from '../../media/products/serum2.jpg';
 import serum3 from '../../media/products/serum3.jpg';
 
+import mask1 from '../../media/products/mask1.jpg';
+import mask2 from '../../media/products/mask2.jpg';
+import mask3 from '../../media/products/mask3.jpg';
+
 import oil1 from '../../media/products/oil1.jpg';
 import oil2 from '../../media/products/oil2.jpg';
 import oil3 from '../../media/products/oil3.jpg';
@@ -70,6 +74,21 @@ const serumMedia = [
     }
 ];
 
+const maskMedia = [
+    {
+        alt: "Product image of mask",
+        src: mask1
+    },
+    {
+        alt: "Opened tin of mask, showing white, dense substance",
+        src: mask2
+    },
+    {
+        alt: "A man with the mask applied all over the face",
+        src: mask3
+    }
+];
+
 const oilMedia = [
     {
         alt: "Product image of oil",
@@ -100,4 +119,4 @@ const creamMedia = [
     }
 ];
 
-export {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia};
+export {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia, maskMedia};

@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productsAmount: 5,
+      productsAmount: 6,
       favourites: [],
       basket: {
         amount: 0,
@@ -18,6 +18,7 @@ class App extends React.Component {
     }
   }
 
+/* To do: pre-load media? it's awful slow sometimes */
   render() {
 
     const productHandlers = [(e) => this.handleFavourite(e), (e) => this.handleAddToBasket(e)];

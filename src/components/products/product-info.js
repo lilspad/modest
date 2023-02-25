@@ -1,4 +1,4 @@
-import {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia} from './product-media.js';
+import {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia, maskMedia} from './product-media.js';
 
 const defaultInfo = {
     name: "Nothing here 👀 ",
@@ -32,6 +32,14 @@ const serumInfo = {
     media: serumMedia
 };
 
+const maskInfo = {
+    name: "Mask",
+    price: 14,
+    size: "100g",
+    description: "Luxurious pick-me-up for dull, tired skin (and a perfect excuse to relax).",
+    media: maskMedia
+};
+
 const oilInfo = {
     name: "Oil",
     price: 9,
@@ -43,9 +51,9 @@ const oilInfo = {
 const creamInfo = {
     name: "Cream",
     price: 8,
-    size: "90ml",
+    size: "90g",
     description: "Quick-absorbing, all-purpose cream sutiable for all skin types.",
     media: creamMedia
 };
 
-export {defaultInfo, cleanserInfo, tonicInfo, serumInfo, oilInfo, creamInfo};
+export {defaultInfo, cleanserInfo, tonicInfo, serumInfo, oilInfo, creamInfo, maskInfo};

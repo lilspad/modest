@@ -132,7 +132,7 @@ $accent-font-family: 'Akaya Telivigala', cursive;
 }
 
 main {
-    margin-top: 100px;
+    margin-top: 10vh;
 
     .overlay {
         position: fixed;
@@ -143,6 +143,41 @@ main {
         z-index: 50;
         width: 100vw;
         height: 100vh;
+    }
+}
+
+.banner {
+    display: flex;
+    flex-wrap: no-wrap;
+    height: 90vh;
+    width: 100vw;
+    background-image: url('./media/banner-img.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: $accent-color;
+    font-family: $main-font-family;
+    color: $main-color;
+}
+
+.banner-space {
+    width: 40%;
+    height: 100%;
+}
+
+.banner-content {
+    width: 50%;
+    height: 80%;
+    margin: auto;
+    background-color: $accent-color;
+    border-radius: 15px;
+    h1 {
+        font-size: 4rem;
+        padding: 0 17%;
+        padding-top: 12%;
+    }
+    p {
+        font-size: 1.7rem;
+        padding: 2% 17%;
     }
 }
 
@@ -288,8 +323,8 @@ main {
 .product {
 
     font-family: $main-font-family;
-    width: 25vw;
-    height: 80vh;
+    width: 340px;
+    height: 550px;
     margin: auto;
 
     .product-header {
@@ -306,8 +341,8 @@ main {
     }
 
     .description {
-        padding: 5px;
-        height: 10%;
+        padding: 16px;
+        height: 60px;
     }
 
     .product-buttons {
@@ -359,7 +394,7 @@ main {
 
     .img-container {
         position: relative;
-        height: 50vh;
+        height: 300px;
         width: 100%;
         margin: auto;
     }

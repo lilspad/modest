@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Modest",
+  "name": "Modest Skincare eCommerce website created using React",
   "icon":
     {
       "src": "favicon.ico",

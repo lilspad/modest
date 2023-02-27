@@ -175,8 +175,8 @@ class App extends React.Component {
 
   handleAddToBasket(event) {
     const id = Math.floor(event.target.id.replace("atbsk-button", ""));
-    const price = Math.floor(document.getElementById("price" + id).innerText.match(/\d+/)[0]);
-    let quantity;
+    const price = Math.floor(document.getElementById("price" + id).innerText.match(/\d+/)[0]);    
+    let quantity = 1;
 
     const handleChange = (e) => {
       e.target.addEventListener("focusout", () => {
@@ -198,15 +198,14 @@ class App extends React.Component {
     }
     
     const item = (
-      <div className="product-inbasket" key={"item" + id} >
+      <div className="product-inbasket" key={"item" + id} id={"item" + id}>
         <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} />
         <input id={"input" + id} type="number" name="quantity" value={quantity} onChange={handleChange}></input>
-        <button className="remove"> <i className="fa-regular fa-trash-can"></i> </button>
+        <button className="remove" onClick={(e) => this.handleRemoveFromBasket(e)} id={"rmv-button" + id}> <i className="fa-regular fa-trash-can"></i> </button>
       </div>
     )
 
-    const basket = this.state.basket;
-    const basketItems = basket.items;
+    const basketItems = this.state.basket.items;
 
 /* To do: there has got to be a better way to do this!!! */
     const isAlready = () => {
@@ -222,7 +221,6 @@ class App extends React.Component {
     if (isAlready()) {
       document.getElementById("input" + id).value ++;
     } else {
-      quantity = 1;
       basketItems.push(item);
     }
 
@@ -235,6 +233,33 @@ class App extends React.Component {
         }
       })
     )
+  }
+
+  handleRemoveFromBasket(event) {
+    const id = Math.floor(event.target.id.replace("rmv-button", ""));
+    const price = Math.floor(document.getElementById("price" + id).innerText.match(/\d+/)[0]);
+    const value = Math.floor(document.getElementById("input" + id).value);
+    const basketItems = this.state.basket.items;
+
+    console.log(id, price, basketItems[0])
+
+    for (let i = 0; i < basketItems.length; i++) {
+      if (basketItems[i].props.id === "item" + id) {
+        basketItems.splice(i, 1);
+      }
+    }
+
+    console.log(basketItems)
+
+    this.setState(
+      prevState => ({
+        basket: {
+          amount: prevState.basket.amount - value,
+          items: basketItems,
+          total: prevState.basket.total - price*value
+        }
+      })
+    )  
   }
 
   handleClear() {

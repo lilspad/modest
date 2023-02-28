@@ -1,9 +1,35 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import './style.scss';
 import Wishlist from './components/wishlist.js';
 import Basket from './components/basket.js';
 import ProductList from './components/product-list.js';
 import Product from './components/products/product.js';
+
+function Message() {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+
+    if (query.get("success")) {
+      setMessage("Order placed! You will receive an email confirmation.");
+    }
+
+    if (query.get("canceled")) {
+      setMessage(
+        "Order canceled -- continue to shop around and checkout when you're ready."
+      );
+    }
+  }, []);
+
+  return message ? (
+    <section>
+      <p>{message}</p>
+    </section>
+  ) : ('');
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +75,7 @@ class App extends React.Component {
 
         </header>
         <main id="main">
-
+          <Message />
           <Wishlist favourites={this.state.favourites} />
           <Basket basketStats={this.state.basket} handleClear={() => this.handleClear()} />
 

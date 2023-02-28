@@ -1,17 +1,22 @@
 import Checkout from "./checkout.js";
 
 function Basket(props) {
+    const amount = props.basketStats.amount;
+    const items = props.basketStats.items;
+    const total = props.basketStats.total;
+
+    console.log('basket', items)
     
     return (
         <div className="basket" id="basket">
-            <h2>{props.basketStats.amount === 0 ? "Your basket is empty." : "Items in the basket (" + props.basketStats.amount + ")"}</h2>
+            <h2>{amount === 0 ? "Your basket is empty." : "Items in the basket (" + amount + ")"}</h2>
             <ul id="basket-list">
-                {props.basketStats.items}
+                {items}
             </ul>
-            <p style={props.basketStats.amount === 0 ? {display: "none"} : {}}>Total: £{props.basketStats.total} 
+            <p style={amount === 0 ? {display: "none"} : {}}>Total: £{total} 
             <br></br> <span className="shipping">Shipping calculated at checkout</span></p> 
-            <div className="basket-buttons" style={props.basketStats.amount === 0 ? {display: "none"} : {}}>
-                <Checkout items={props.basketStats.items} />
+            <div className="basket-buttons" style={amount === 0 ? {display: "none"} : {}}>
+                <Checkout items={items} />
                 <button className="clear" onClick={props.handleClear}> Clear basket </button>
             </div>
         </div>

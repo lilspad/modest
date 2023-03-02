@@ -8,7 +8,7 @@ function Basket(props) {
     console.log('basket', items)
     
     return (
-        <div className="basket" id="basket">
+        <div className="basket hidden" id="basket">
             <h2>{amount === 0 ? "Your basket is empty." : "Items in the basket (" + amount + ")"}</h2>
             <ul id="basket-list">
                 {items}

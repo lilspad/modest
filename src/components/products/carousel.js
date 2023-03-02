@@ -1,4 +1,3 @@
-import {defaultMedia} from "./product-media";
 import ProductInfo from "./product-info";
 
 export default function Carousel(props) {

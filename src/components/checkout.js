@@ -24,6 +24,8 @@ export default function Checkout(props) {
             case 'item5':
                 stripePricesKeys.push('price_1MgEw9GrxL0zd9YAqVnFD0ja')
                 break;
+            default: 
+                return;
         }
     }
 

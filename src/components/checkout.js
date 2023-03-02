@@ -46,7 +46,7 @@ export default function Checkout(props) {
         </form>
         <form action="/create-checkout-session" method="POST">
             <input type="hidden" name="prices" value={JSON.stringify(stripePrices)}/>
-            <button type="submit" className="checkout" name="checkout">
+            <button type="submit" className="checkout">
                 Checkout
             </button>
         </form>

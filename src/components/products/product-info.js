@@ -22,7 +22,7 @@ const tonicInfo = {
     price: 5,
     size: "500ml",
     description: "Refreshing tonic for a clean feel skin.",
-    media: media[2]
+    media: media[3]
 };
 
 const serumInfo = {
@@ -30,7 +30,7 @@ const serumInfo = {
     price: 12,
     size: "50ml",
     description: "Packed with vitamins and actives, superbly performing serum for all your needs.",
-    media: media[3]
+    media: media[2]
 };
 
 const maskInfo = {
@@ -38,7 +38,7 @@ const maskInfo = {
     price: 14,
     size: "100g",
     description: "Luxurious pick-me-up for dull, tired skin (and a perfect excuse to relax).",
-    media: media[4]
+    media: media[6]
 };
 
 const oilInfo = {
@@ -46,7 +46,7 @@ const oilInfo = {
     price: 9,
     size: "50ml",
     description: "Lightweight and non-sticky moisturisiing oil.",
-    media: media[5]
+    media: media[4]
 };
 
 const creamInfo = {
@@ -54,7 +54,7 @@ const creamInfo = {
     price: 8,
     size: "90g",
     description: "Quick-absorbing, all-purpose cream sutiable for all skin types.",
-    media: media[6]
+    media: media[5]
 };
 
 export default function ProductInfo() {
@@ -70,8 +70,6 @@ const [imgsLoaded, setImgsLoaded] = useState(false)
           setTimeout(() => {
             resolve(image.src)
           }, 2000)
-
-        loadImg.onerror = err => reject(err)
       })
     }
     // eslint-disable-next-line

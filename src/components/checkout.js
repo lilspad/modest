@@ -36,14 +36,8 @@ export default function Checkout(props) {
         }
     })
 
-    console.log('checkout', stripePricesKeys, stripePrices);
-
     return (
         <section>
-        <form method="POST" action="/" className="basket-buttons" >
-                <input type="hidden" name="test" value={JSON.stringify(stripePrices)}/>
-                <button type="submit" className="checkout">TEST</button>
-        </form>
         <form action="/create-checkout-session" method="POST">
             <input type="hidden" name="prices" value={JSON.stringify(stripePrices)}/>
             <button type="submit" className="checkout">

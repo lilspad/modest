@@ -1,6 +1,6 @@
 $main-color: #ffffff;
 $font-color: #000000;
-$info-color: #818181;
+$info-color: #505050;
 $background-color: #dad9d9;
 $accent-color: #f0c7d5;
 $heart-color: #f07ca2;
@@ -450,5 +450,26 @@ footer {
         &:hover {
             color: $main-color;
         }
+    }
+}
+
+.post-payment {
+    font: 1rem $main-font-family;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 40px;
+    position: fixed;
+    z-index: 5;
+    background-color: $main-color;
+    border: 1px solid $background-color;
+    p, button {
+        margin: 0 50px;
+    }
+    button {
+        @include action-buttons;
+        right: 0;
+        padding: 10px 20px;
     }
 }

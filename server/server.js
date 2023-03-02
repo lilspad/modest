@@ -11,12 +11,7 @@ app.use(bodyParser.urlencoded({
  extended: true})); 
 app.use(cors())
 
-const YOUR_DOMAIN = 'http://localhost:4242';
-
-app.post('/', async (req, res) => {
-  const prices = JSON.parse(req.body.test);
-  console.log('server', prices, prices[0].price);
-})
+const domain = 'http://localhost:3000';
 
 app.post('/create-checkout-session', async (req, res) => {
   const prices = JSON.parse(req.body.prices);
@@ -24,8 +19,8 @@ app.post('/create-checkout-session', async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: prices,
     mode: 'payment',
-    success_url: `${YOUR_DOMAIN}?success=true`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+    success_url: `${domain}?success=true`,
+    cancel_url: `${domain}?canceled=true`,
   });
   res.redirect(303, session.url);
 });

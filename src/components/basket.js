@@ -4,8 +4,6 @@ function Basket(props) {
     const amount = props.basketStats.amount;
     const items = props.basketStats.items;
     const total = props.basketStats.total;
-
-    console.log('basket', items)
     
     return (
         <div className="basket hidden" id="basket">

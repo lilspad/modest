@@ -24,12 +24,9 @@ function Message() {
     }
   }, []);
 
-  return message ? (
-    <section>
-      <p>{message}</p>
-    </section>
-  ) : ('');
-}
+  return message ? (<section><p>{message}</p></section>) : ('');
+};
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -155,8 +152,8 @@ class App extends React.Component {
     
     wishlist.push(
       <li key={i} id={"item" + i}>
-        <Product productId={i} thumbnail={true} button={<button className="remove" onClick={() => this.removeFromWishlist(i)}> x </button>} handleClick={this.handleOverlay} />
-        <button className="product-button addToBasket" id={"atbsk-button" + i} onClick={(e) => this.handleAddToBasket(e)}> <i className="fa-solid fa-basket-shopping"></i></button>
+        <Product productId={i} thumbnail={true} button={<button name="remove" className="remove" onClick={() => this.removeFromWishlist(i)}> x </button>} handleClick={this.handleOverlay} />
+        <button name="add-to-basket" className="product-button addToBasket" id={"atbsk-button" + i} onClick={(e) => this.handleAddToBasket(e)}> <i className="fa-solid fa-basket-shopping"></i></button>
       </li>)
 
     this.setState({
@@ -227,7 +224,7 @@ class App extends React.Component {
       <div className="product-inbasket" key={"item" + id} id={"item" + id}>
         <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} />
         <input id={"input" + id} type="number" name="quantity" value={quantity} onChange={handleChange}></input>
-        <button className="remove" onClick={(e) => this.handleRemoveFromBasket(e)} id={"rmv-button" + id}> <i className="fa-regular fa-trash-can"></i> </button>
+        <button className="remove" name="remove" onClick={(e) => this.handleRemoveFromBasket(e)} id={"rmv-button" + id}> <i className="fa-regular fa-trash-can"></i> </button>
       </div>
     )
 
@@ -267,15 +264,11 @@ class App extends React.Component {
     const value = Math.floor(document.getElementById("input" + id).value);
     const basketItems = this.state.basket.items;
 
-    console.log(id, price, basketItems[0])
-
     for (let i = 0; i < basketItems.length; i++) {
       if (basketItems[i].props.id === "item" + id) {
         basketItems.splice(i, 1);
       }
     }
-
-    console.log(basketItems)
 
     this.setState(
       prevState => ({

@@ -17,7 +17,7 @@ function Basket(props) {
             <br></br> <span className="shipping">Shipping calculated at checkout</span></p> 
             <div className="basket-buttons" style={amount === 0 ? {display: "none"} : {}}>
                 <Checkout items={items} />
-                <button className="clear" onClick={props.handleClear}> Clear basket </button>
+                <button className="clear" onClick={props.handleClear} name="clear"> Clear basket </button>
             </div>
         </div>
     )

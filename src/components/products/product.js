@@ -28,7 +28,7 @@ function Product(props) {
             info = oilInfo;
             break;
         default:
-            info = defaultInfo;
+            info = defaultInfo; //default is 'No product found' and should only pass if app items amount is more than available data
     }
 
     const productName = info.name;
@@ -38,7 +38,7 @@ function Product(props) {
     const productSrc = info.media;
 
     const productId = "product" + id;
-
+        //alt display for basket and wishlist
         if (props.thumbnail) {
             return (
                 <div className="product">
@@ -54,7 +54,7 @@ function Product(props) {
 
     return (
         <div className="product" id={productId}>
-            {info === defaultInfo ? "" : <Carousel productSrc={productSrc} productId={id} />}
+            {info === defaultInfo ? "" : <Carousel productSrc={productSrc} productId={id} /> /* no images if default */}
             <div className="product-header">
                 <h3>{productName}</h3>
                 <p id={"price" + id} style={info === defaultInfo ? {display: 'none'} : {}} >£{productPrice} | {productSize} </p>

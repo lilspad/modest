@@ -74,12 +74,8 @@ const [imgsLoaded, setImgsLoaded] = useState(false)
         loadImg.onerror = err => reject(err)
       })
     }
-
-    Promise.all(media.map(image => {
-        
-            loadImage(image[0])
-        
-        }))
+    // eslint-disable-next-line
+    Promise.all(media.map(image => {loadImage(image[0])}))
       .then(() => setImgsLoaded(true))
       .catch(err => console.log("Failed to load images", err.target))
   }, [])

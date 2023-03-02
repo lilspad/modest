@@ -8,9 +8,8 @@ import Product from './components/products/product.js';
 
 function Message() {
   const [message, setMessage] = useState("");
-
+  // check to see if this is a redirect back from Checkout
   useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
 
     if (query.get("success")) {
@@ -44,7 +43,6 @@ class App extends React.Component {
     }
   }
 
-/* To do: pre-load media? it's awful slow sometimes */
   render() {
 
     const productHandlers = [(e) => this.handleFavourite(e), (e) => this.handleAddToBasket(e)];
@@ -68,6 +66,7 @@ class App extends React.Component {
 
             <div onClick={(e) => this.handleMenuEvent(e)}>
               <i className="fa-solid fa-basket-shopping" id="basket-icon" ></i>
+              {/* show basket amount if not empty */}
               <p>{this.state.basket.amount === 0 ? "" : "(" + this.state.basket.amount + ")"}</p>
             </div>
 
@@ -86,12 +85,12 @@ class App extends React.Component {
             <div className="banner-content">
               <h1>No need to be modest!</h1>
               <p>We know you're gorgoues. You just need a little more self-love. Or a little detox. Or just a little pick-me-up.
-              Whatever it is, out products deliver it without irritating, breaking or whatsoever changing your already perfect skin. </p>
+              Whatever it is, our products deliver it without irritating, breaking or whatsoever changing your already perfect skin. </p>
             </div>
           </div>*/}
-
+          <h2 className="products-title">Browse our products: </h2>
           <div className="product-layout">
-
+      
             <ProductList productsAmount={this.state.productsAmount} productHandlers={productHandlers} />
 
           </div>
@@ -108,6 +107,7 @@ class App extends React.Component {
     );
   }
 
+//hide and show pop-up sections depending on which is already on
   handleMenuEvent(event) {
     
     const menu = document.getElementById("header-menu");
@@ -138,6 +138,7 @@ class App extends React.Component {
     }
   }
 
+// hide all pop-up sections
   handleOverlay() {
     const arr = []
 
@@ -200,17 +201,21 @@ class App extends React.Component {
   }
 
   handleAddToBasket(event) {
+
     const id = Math.floor(event.target.id.replace("atbsk-button", ""));
     const price = Math.floor(document.getElementById("price" + id).innerText.match(/\d+/)[0]);    
     let quantity = 1;
 
+    //quantity input
     const handleChange = (e) => {
+      //only handle change if user un-focuses from field
       e.target.addEventListener("focusout", () => {
         if (!e.target.value) {
           e.target.value = quantity;
         } 
         var difference = Math.floor(e.target.value - quantity);
         quantity = e.target.value;
+        //update basket state
         this.setState(
           prevState => ({
             basket: {
@@ -222,18 +227,18 @@ class App extends React.Component {
         )
       })
     }
-    
+
     const item = (
       <div className="product-inbasket" key={"item" + id} id={"item" + id}>
-        <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} />
+        <Product productId={id} thumbnail={true} handleClick={this.handleOverlay} /> {/* Product click event removes all pop-ups to focus back on product display */}
         <input id={"input" + id} type="number" name="quantity" value={quantity} onChange={handleChange}></input>
         <button className="remove" onClick={(e) => this.handleRemoveFromBasket(e)} id={"rmv-button" + id}> <i className="fa-regular fa-trash-can"></i> </button>
       </div>
-    )
+    ) 
 
     const basketItems = this.state.basket.items;
 
-/* To do: there has got to be a better way to do this!!! */
+/* To do: there has got to be a better way to do this!!! (???) */
     const isAlready = () => {
       let bool = false;
       basketItems.forEach(element => {
@@ -244,12 +249,14 @@ class App extends React.Component {
       return bool;
     }
     
+    // don't add a new product if it already exists; increase quantity instead
     if (isAlready()) {
       document.getElementById("input" + id).value ++;
     } else {
       basketItems.push(item);
     }
 
+    // update basket
     this.setState(
       prevState => ({
         basket: {
@@ -267,16 +274,14 @@ class App extends React.Component {
     const value = Math.floor(document.getElementById("input" + id).value);
     const basketItems = this.state.basket.items;
 
-    console.log(id, price, basketItems[0])
-
+    // find the item in basket array and remove it
     for (let i = 0; i < basketItems.length; i++) {
       if (basketItems[i].props.id === "item" + id) {
         basketItems.splice(i, 1);
       }
     }
 
-    console.log(basketItems)
-
+    // update basket
     this.setState(
       prevState => ({
         basket: {
@@ -288,7 +293,9 @@ class App extends React.Component {
     )  
   }
 
+  //reset basket stats
   handleClear() {
+    //double check with user
     if (!window.confirm("Are you sure?")) {
       return;
     }

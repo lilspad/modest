@@ -88,6 +88,10 @@ $accent-font-family: 'Akaya Telivigala', cursive;
     p {
         text-align: center;
     }
+
+    @media screen and (max-width: 850px) {
+        width: 100vw;
+    }
 }
 
 * {
@@ -119,6 +123,11 @@ $accent-font-family: 'Akaya Telivigala', cursive;
             margin: 0.3rem;
             font-size: 0.9rem;
         }
+        @media screen and (max-width: 850px) {
+            p {
+                display: none;
+            }
+        }
     }
 
     i:hover {
@@ -148,7 +157,6 @@ main {
 
 .banner {
     display: flex;
-    flex-wrap: no-wrap;
     height: 90vh;
     width: 100vw;
     background-image: url('./media/banner-img.jpg');
@@ -165,20 +173,65 @@ main {
 }
 
 .banner-content {
-    width: 50%;
-    height: 80%;
+    width: 40em;
+    height: 30em;
+    padding: 3em 0;
     margin: auto;
     background-color: $accent-color;
     border-radius: 15px;
     h1 {
         font-size: 4rem;
-        padding: 0 17%;
-        padding-top: 12%;
+        height: 20%;
+        width: 65%;
+        margin: auto;
     }
     p {
         font-size: 1.7rem;
-        padding: 2% 17%;
+        width: 65%;
+        margin: auto;
+        margin-top: 10%;
     }
+}
+
+@media screen and (max-width: 1200px) {
+
+    .banner-content {
+        width: 30em;
+        height: 20em;
+        h1 {
+            font-size: 3rem;
+            height: 25%;
+        }
+        p {
+            font-size: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .banner {
+        flex-wrap: wrap;
+        height: 100vh;
+        overflow: hidden;
+        background-size: contain;
+        .banner-space {
+            height: 10%;
+        }
+        .banner-content {
+            width: 100vw;
+            height: fit-content;
+            padding: 1em 0;
+            h1 {
+                font-size: 3rem;
+                height: 10%;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }  
 }
 
 .wishlist {
@@ -223,6 +276,12 @@ main {
         width: 50%;
         margin: 0 calc(15vw / 4);
         margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 850px) {
+        .product {
+            width: 40vw;
+        }
     }
 }
 

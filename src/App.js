@@ -80,14 +80,15 @@ class App extends React.Component {
 
           <div className="overlay hidden" id="overlay" onClick={this.handleOverlay}></div>
 
-          {/*<div className="banner" >
+          <div className="banner" >
             <div className="banner-space"></div>
             <div className="banner-content">
               <h1>No need to be modest!</h1>
               <p>We know you're gorgoues. You just need a little more self-love. Or a little detox. Or just a little pick-me-up.
               Whatever it is, our products deliver it without irritating, breaking or whatsoever changing your already perfect skin. </p>
             </div>
-          </div>*/}
+          </div>
+          
           <h2 className="products-title">Browse our products: </h2>
           <div className="product-layout">
       

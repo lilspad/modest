@@ -65,7 +65,7 @@ function Product(props) {
                 <button className="product-button favourite" id={"fav-button" + id} onClick={props.productHandlers[0]}> <i className="fa-solid fa-heart"></i> Favourite</button>
             </div>
         </div>
-    )
+    );
 }
 
 export default Product;

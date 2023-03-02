@@ -119,4 +119,6 @@ const creamMedia = [
     }
 ];
 
-export {defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia, maskMedia};
+const media = [defaultMedia, cleanserMedia, serumMedia, tonicMedia, oilMedia, creamMedia, maskMedia]
+
+export {media, defaultMedia};

@@ -11,9 +11,7 @@ app.use(bodyParser.urlencoded({
  extended: true})); 
 app.use(cors())
 
-const domain = 'https://modestskincare.netlify.app';
-
-console.log(domain)
+const domain = 'http://localhost:3000';
 
 app.post('/create-checkout-session', async (req, res) => {
   const prices = JSON.parse(req.body.prices);
@@ -26,3 +24,5 @@ app.post('/create-checkout-session', async (req, res) => {
   });
   res.redirect(200, session.url);
 });
+
+app.listen(4242, () => console.log('Running on port 4242'));

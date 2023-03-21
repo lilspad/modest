@@ -24,7 +24,5 @@ app.post('/create-checkout-session', async (req, res) => {
     success_url: `${domain}?success=true`,
     cancel_url: `${domain}?canceled=true`,
   });
-  res.redirect(303, session.url);
+  res.redirect(200, session.url);
 });
-
-app.listen(3000, () => console.log('Running on port 4242'));

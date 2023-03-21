@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({
  extended: true})); 
 app.use(cors())
 
-const domain = 'http://localhost:3000';
+const domain = 'https://modestskincare.netlify.app';
+
+console.log(domain)
 
 app.post('/create-checkout-session', async (req, res) => {
   const prices = JSON.parse(req.body.prices);

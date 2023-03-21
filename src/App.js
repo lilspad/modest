@@ -6,6 +6,8 @@ import Basket from './components/basket.js';
 import ProductList from './components/product-list.js';
 import Product from './components/products/product.js';
 
+console.log(window.origin)
+
 function Message() {
   const [message, setMessage] = useState("");
   // check to see if this is a redirect back from Checkout

@@ -9,7 +9,11 @@ app.use( bodyParser.json() );
 
 app.use(bodyParser.urlencoded({
  extended: true})); 
-app.use(cors())
+app.use(cors({
+    // origin: process.env.ORIGIN
+    origin: "*",
+    methods: ["GET", "POST"]
+}))
 
 const domain = 'https://modestskincare.netlify.app';
 
@@ -26,3 +30,6 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 app.listen(4242, () => console.log('Running on port 4242'));
+
+
+// NEED TO find out how to run this on netlify

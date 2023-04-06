@@ -9,6 +9,6 @@ An e-commerce website app created with React for a made-up skincare brand Modest
 - Stripe chekout API
 
 
-# Status
+## Status
 
 Deployed and ready to use, but there is no sign-up and other user account functionalities yet.
